@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Compra Confirmada — Burnout em Silêncio | Medinas Produções</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{--petroleo:#1B3A4B;--petroleo-deep:#10222D;--terracota:#C2542D;--branco:#F8F9FA;--bege:#F5F0EB;--cinza:#4A5568;--cinza-claro:#8296A3;--verde:#16A34A;--verde-bg:#F0FDF4;--verde-borda:#BBF7D0}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Lato',sans-serif;background:var(--branco);color:var(--cinza);line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
+h1,h2,h3{font-family:'Lora',serif;color:var(--petroleo);font-weight:600}
+.topbar{background:var(--petroleo-deep);padding:16px 0;border-bottom:1px solid rgba(255,255,255,.09)}
+.topbar .container{display:flex;align-items:center;gap:12px}
+.brand-mark{width:34px;height:34px;background:var(--terracota);border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-weight:700;font-size:18px;color:#fff}
+.brand-name{font-weight:700;font-size:13px;letter-spacing:3px;color:#fff}
+.brand-sub{font-size:9px;letter-spacing:4px;color:#7D95A6}
+.container{max-width:680px;margin:0 auto;padding:0 24px}
+main{flex:1;padding:48px 0}
+
+/* Estados */
+.state{display:none}
+.state.active{display:block}
+
+/* Verificando */
+.checking{text-align:center;padding:80px 0}
+.spinner{width:48px;height:48px;border:4px solid var(--bege);border-top-color:var(--terracota);border-radius:50%;animation:spin 1s linear infinite;margin:0 auto 24px}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* Sucesso */
+.success-icon{width:72px;height:72px;background:var(--verde-bg);border:2px solid var(--verde-borda);border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 24px}
+.success-icon svg{width:36px;height:36px;color:var(--verde)}
+.download-btn{display:inline-flex;align-items:center;gap:12px;background:var(--terracota);color:#fff;font-family:'Lato';font-weight:700;font-size:18px;padding:20px 48px;border-radius:10px;text-decoration:none;transition:.25s;border:none;cursor:pointer;box-shadow:0 6px 24px rgba(194,84,45,.35);margin-top:28px}
+.download-btn:hover{background:#A8441F;transform:translateY(-2px);box-shadow:0 10px 30px rgba(194,84,45,.45)}
+.download-btn svg{width:22px;height:22px}
+
+/* Card de informação */
+.info-card{background:#fff;border:1px solid #E4DED6;border-radius:14px;padding:32px;margin-top:32px}
+.info-card h3{font-size:18px;margin-bottom:16px}
+.step{display:flex;gap:16px;padding:14px 0;border-bottom:1px solid #F0EDE8}
+.step:last-child{border:none}
+.step-num{width:32px;height:32px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:13px;flex-shrink:0}
+.step-num.done{background:var(--verde-bg);color:var(--verde)}
+.step-num.current{background:var(--petroleo);color:#fff}
+.step-num.pending{background:var(--bege);color:var(--cinza-claro)}
+.step p{font-size:14.5px}
+.step strong{color:var(--petroleo)}
+
+/* Fallback manual */
+.manual-card{background:#fff;border:1px solid #E4DED6;border-radius:14px;padding:32px;margin-top:32px}
+.manual-card h3{font-size:18px;margin-bottom:8px}
+.manual-card .subtitle{font-size:13.5px;color:var(--cinza-claro);margin-bottom:24px}
+.field{margin-bottom:16px}
+.field label{display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--cinza);margin-bottom:6px}
+.field input{width:100%;padding:12px 16px;border:1px solid #E4DED6;border-radius:8px;font-size:15px;font-family:'Lato';transition:.2s}
+.field input:focus{outline:none;border-color:var(--petroleo);box-shadow:0 0 0 3px rgba(27,58,75,.08)}
+.btn-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.btn-wpp{display:flex;align-items:center;justify-content:center;gap:8px;background:#16A34A;color:#fff;font-weight:700;padding:14px;border-radius:10px;border:none;cursor:pointer;font-size:14.5px;transition:.2s}
+.btn-wpp:hover{background:#15803D}
+.btn-email{display:flex;align-items:center;justify-content:center;gap:8px;background:var(--petroleo);color:#fff;font-weight:700;padding:14px;border-radius:10px;border:none;cursor:pointer;font-size:14.5px;transition:.2s}
+.btn-email:hover{background:var(--petroleo-deep)}
+.aviso{display:none;text-align:center;color:#DC2626;font-size:13px;margin-top:12px}
+
+/* Selo de segurança */
+.selo{display:flex;gap:14px;align-items:flex-start;background:var(--bege);border-radius:10px;padding:18px 20px;margin-top:28px}
+.selo svg{width:20px;height:20px;flex-shrink:0;margin-top:2px;color:var(--petroleo)}
+.selo p{font-size:13px;line-height:1.6}
+.selo b{color:var(--petroleo)}
+
+/* Footer */
+footer{padding:32px 0;text-align:center;border-top:1px solid #E4DED6;margin-top:48px}
+footer p{font-size:11.5px;color:var(--cinza-claro)}
+
+@media(max-width:560px){.btn-grid{grid-template-columns:1fr}.container{padding:0 16px}}
+</style>
+</head>
+<body>
+
+<nav class="topbar">
+  <div class="container">
+    <div class="brand-mark">M</div>
+    <div>
+      <div class="brand-name">MEDINAS</div>
+      <div class="brand-sub">PRODUÇÕES</div>
+    </div>
+  </div>
+</nav>
+
+<main>
+  <div class="container">
+
+    <!-- ESTADO 1: Verificando pagamento -->
+    <div id="state-checking" class="state active">
+      <div class="checking">
+        <div class="spinner"></div>
+        <h2>Verificando seu pagamento...</h2>
+        <p style="color:var(--cinza-claro);margin-top:8px">Isso leva apenas alguns segundos.</p>
+      </div>
+    </div>
+
+    <!-- ESTADO 2: Pagamento confirmado — download liberado -->
+    <div id="state-success" class="state">
+      <div style="text-align:center;padding-top:20px">
+        <div class="success-icon">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"/></svg>
+        </div>
+        <h1 style="font-size:28px">Pagamento confirmado! 🎉</h1>
+        <p style="margin-top:8px;color:var(--cinza-claro);max-width:460px;display:inline-block">Seu acesso ao ebook <strong style="color:var(--petroleo)">Burnout em Silêncio</strong> está liberado. Clique no botão abaixo para baixar.</p>
+        <br>
+        <a id="download-link" class="download-btn" href="/assets/burnout-em-silencio.pdf" download>
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg>
+          Baixar meu Ebook (PDF)
+        </a>
+        <p style="font-size:12.5px;color:var(--cinza-claro);margin-top:14px">O download inicia automaticamente. Salve o arquivo no seu celular ou computador.</p>
+      </div>
+
+      <div class="info-card">
+        <h3>Próximos passos</h3>
+        <div class="step"><div class="step-num done">✓</div><div><p><strong>Pagamento recebido</strong> — processado com sucesso pela InfinitePay.</p></div></div>
+        <div class="step"><div class="step-num current">2</div><div><p><strong>Baixe o ebook</strong> — clique no botão acima e salve o PDF no seu dispositivo.</p></div></div>
+        <div class="step"><div class="step-num pending">3</div><div><p><strong>Comece pelo que faz sentido</strong> — se está em crise, vá direto ao Capítulo 3. Se quer entender o que sente, comece pelo 1.</p></div></div>
+      </div>
+
+      <div class="selo">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        <p><b>Garantia de 7 dias:</b> se o guia não fizer sentido para você, nos envie um e-mail e devolvemos 100% do valor, sem perguntas.</p>
+      </div>
+    </div>
+
+    <!-- ESTADO 3: Fallback manual (verificação falhou ou sem parâmetros) -->
+    <div id="state-manual" class="state">
+      <div style="text-align:center;padding-top:20px">
+        <div class="success-icon" style="background:#FEF3C7;border-color:#FDE68A">
+          <svg fill="none" stroke="currentColor" viewBox="0 0 24 24" style="color:#D97706"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4.5c-.77-.833-2.694-.833-3.464 0L3.34 16.5c-.77.833.192 2.5 1.732 2.5z"/></svg>
+        </div>
+        <h1 style="font-size:28px">Quase lá!</h1>
+        <p style="margin-top:8px;color:var(--cinza-claro);max-width:460px;display:inline-block">Recebemos sua compra. Para agilizar a liberação do seu ebook, confirme seus dados abaixo.</p>
+      </div>
+
+      <div class="info-card">
+        <div class="step"><div class="step-num done">✓</div><div><p><strong>Pagamento efetuado</strong> — processado pela InfinitePay.</p></div></div>
+        <div class="step"><div class="step-num current">2</div><div><p><strong>Confirme para agilizar</strong> — clique em um dos botões abaixo para nos avisar.</p></div></div>
+        <div class="step"><div class="step-num pending">3</div><div><p><strong>Receba o ebook</strong> — conferimos seu pagamento e enviamos o PDF pelo mesmo canal.</p></div></div>
+      </div>
+
+      <div class="manual-card">
+        <h3>Confirme sua compra</h3>
+        <p class="subtitle">Preencha seus dados. Ao clicar em enviar, abrirá o WhatsApp ou e-mail com a mensagem já pronta.</p>
+        <div class="field">
+          <label>Seu nome</label>
+          <input type="text" id="conf-nome" placeholder="Como podemos te chamar?">
+        </div>
+        <div class="field">
+          <label>E-mail usado na compra</label>
+          <input type="email" id="conf-email" placeholder="seuemail@exemplo.com">
+        </div>
+        <div class="field">
+          <label>Valor pago (opcional)</label>
+          <input type="text" id="conf-valor" placeholder="Ex: R$ 57,00">
+        </div>
+        <div class="btn-grid">
+          <button class="btn-wpp" onclick="enviarWhatsApp()">
+            <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38a9.9 9.9 0 004.74 1.21h.01c5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.85 9.85 0 0012.04 2z"/></svg>
+            Enviar por WhatsApp
+          </button>
+          <button class="btn-email" onclick="enviarEmail()">
+            <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+            Enviar por E-mail
+          </button>
+        </div>
+        <p id="aviso" class="aviso">Por favor, preencha ao menos seu nome e e-mail.</p>
+      </div>
+
+      <div class="selo">
+        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+        <p><b>Garantia de 7 dias:</b> se o guia não fizer sentido para você, nos envie um e-mail e devolvemos 100% do valor, sem perguntas.</p>
+      </div>
+
+      <div style="text-align:center;margin-top:28px">
+        <p style="font-size:13.5px;color:var(--cinza-claro)">⏱️ Tempo médio de liberação: <strong style="color:var(--petroleo)">poucos minutos</strong> em horário comercial.</p>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <div class="container">
+    <p>© 2026 Medinas Produções — Todos os direitos reservados</p>
+    <p style="margin-top:6px">Dúvidas? contato@medinasproducoes.com.br</p>
+  </div>
+</footer>
+
+<script>
+// ══════════════════════════════════════════════
+// CONFIGURAÇÕES — EDITE AQUI
+// ══════════════════════════════════════════════
+const NUMERO_WHATSAPP = '5500000000000'; // Troque pelo seu número real
+const EMAIL_SUPORTE   = 'contato@medinasproducoes.com.br'; // Troque pelo seu e-mail
+const HANDLE          = 'medina_pay';
+// ══════════════════════════════════════════════
+
+function showState(id) {
+  document.querySelectorAll('.state').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+}
+
+// Lê parâmetros da URL (InfinitePay redireciona com eles)
+function getParams() {
+  const p = new URLSearchParams(window.location.search);
+  return {
+    order_nsu: p.get('order_nsu'),
+    transaction_nsu: p.get('transaction_nsu'),
+    slug: p.get('slug'),
+    receipt_url: p.get('receipt_url')
+  };
+}
+
+// Verifica pagamento via Netlify Function
+async function verificarPagamento() {
+  const params = getParams();
+
+  // Se não tem parâmetros (acesso direto), vai pro manual
+  if (!params.order_nsu || !params.transaction_nsu || !params.slug) {
+    showState('state-manual');
+    return;
+  }
+
+  try {
+    const res = await fetch('/.netlify/functions/verify-payment', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        handle: HANDLE,
+        order_nsu: params.order_nsu,
+        transaction_nsu: params.transaction_nsu,
+        slug: params.slug
+      })
+    });
+
+    const data = await res.json();
+
+    if (data.paid) {
+      // Pagamento confirmado! Libera download
+      showState('state-success');
+
+      // Dispara evento de Purchase nos pixels
+      if (window.fbq) fbq('track', 'Purchase', { value: 57.00, currency: 'BRL' });
+      if (window.ttq) ttq.track('CompletePayment', { value: 57.00, currency: 'BRL' });
+    } else {
+      // Verificação falhou — fallback manual
+      showState('state-manual');
+    }
+  } catch (err) {
+    console.error('Erro na verificação:', err);
+    // Em caso de erro técnico, fallback manual
+    showState('state-manual');
+  }
+}
+
+// Fallback manual — WhatsApp
+function enviarWhatsApp() {
+  const nome  = document.getElementById('conf-nome').value.trim();
+  const email = document.getElementById('conf-email').value.trim();
+  const valor = document.getElementById('conf-valor').value.trim();
+  if (!nome || !email) { document.getElementById('aviso').style.display = 'block'; return; }
+  document.getElementById('aviso').style.display = 'none';
+  const msg = `Olá! Acabei de comprar o ebook Burnout em Silêncio e gostaria de confirmar meu pagamento.\n\nNome: ${nome}\nE-mail: ${email}${valor ? `\nValor pago: ${valor}` : ''}`;
+  window.open(`https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(msg)}`, '_blank');
+}
+
+// Fallback manual — E-mail
+function enviarEmail() {
+  const nome  = document.getElementById('conf-nome').value.trim();
+  const email = document.getElementById('conf-email').value.trim();
+  const valor = document.getElementById('conf-valor').value.trim();
+  if (!nome || !email) { document.getElementById('aviso').style.display = 'block'; return; }
+  document.getElementById('aviso').style.display = 'none';
+  const assunto = 'Confirmação de Pagamento - Burnout em Silêncio';
+  const corpo = `Olá! Acabei de comprar o ebook Burnout em Silêncio e gostaria de confirmar meu pagamento.\n\nNome: ${nome}\nE-mail: ${email}${valor ? `\nValor pago: ${valor}` : ''}`;
+  window.location.href = `mailto:${EMAIL_SUPORTE}?subject=${encodeURIComponent(assunto)}&body=${encodeURIComponent(corpo)}`;
+}
+
+// Inicia verificação ao carregar a página
+verificarPagamento();
+</script>
+</body>
+</html>

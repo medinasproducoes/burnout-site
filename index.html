@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Burnout em Silêncio — O Guia para Quem Não Pode Parar</title>
+<meta name="description" content="Como reconhecer, desacelerar e se recuperar do esgotamento sem abandonar tudo. Para autônomos, MEIs e empreendedores que não têm rede de segurança.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --petroleo:#1B3A4B; --petroleo-deep:#10222D; --petroleo-mid:#2D5A72;
+  --terracota:#C2542D; --terracota-dark:#A8441F;
+  --branco:#F8F9FA; --bege:#F5F0EB; --cinza:#4A5568; --cinza-claro:#8296A3;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:'Lato',sans-serif;color:var(--cinza);background:var(--branco);line-height:1.7;font-size:17px}
+h1,h2,h3{font-family:'Lora',serif;line-height:1.25;font-weight:600}
+img{max-width:100%;display:block}
+.container{max-width:1080px;margin:0 auto;padding:0 24px}
+.eyebrow{font-family:'Lato';font-weight:700;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--terracota)}
+.btn{display:inline-block;background:var(--terracota);color:#fff;font-family:'Lato';font-weight:700;font-size:17px;
+  padding:18px 42px;border-radius:8px;text-decoration:none;transition:.25s;border:none;cursor:pointer;
+  box-shadow:0 6px 24px rgba(194,84,45,.35)}
+.btn:hover{background:var(--terracota-dark);transform:translateY(-2px);box-shadow:0 10px 30px rgba(194,84,45,.45)}
+.btn-sub{display:block;font-size:12.5px;font-weight:400;color:var(--cinza-claro);margin-top:12px;letter-spacing:.3px}
+
+/* ===== TOPBAR ===== */
+.topbar{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(13,28,38,.97);backdrop-filter:blur(10px);
+  padding:0;border-bottom:1px solid rgba(255,255,255,.09);box-shadow:0 10px 34px rgba(0,0,0,.38)}
+.topbar .container{display:flex;justify-content:space-between;align-items:center;height:68px}
+.brand{display:flex;align-items:center;gap:13px;text-decoration:none}
+.brand-mark{width:38px;height:38px;background:var(--terracota);border-radius:8px;display:flex;
+  align-items:center;justify-content:center;font-family:'Lora',serif;font-weight:700;font-size:21px;
+  color:#fff;box-shadow:0 4px 14px rgba(194,84,45,.4)}
+.brand-text{display:flex;flex-direction:column;line-height:1.25}
+.brand-name{font-family:'Lato';font-weight:700;font-size:14.5px;letter-spacing:3.5px;color:#fff}
+.brand-sub{font-family:'Lato';font-weight:400;font-size:9.5px;letter-spacing:5px;color:#7D95A6}
+.topbar a.mini{background:var(--terracota);color:#fff;font-size:13px;font-weight:700;letter-spacing:.8px;
+  padding:12px 26px;border-radius:7px;text-decoration:none;transition:.2s;
+  box-shadow:0 4px 16px rgba(194,84,45,.35)}
+.topbar a.mini:hover{background:var(--terracota-dark);transform:translateY(-1px)}
+@media(max-width:560px){.brand-sub{display:none}.brand-name{font-size:13px;letter-spacing:2.5px}
+  .topbar a.mini{padding:10px 18px;font-size:12px}}
+
+/* ===== HERO ===== */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;
+  background:url('IMGs/hero.jpeg') center/cover no-repeat;padding:120px 0 80px}
+.hero::before{content:'';position:absolute;inset:0;
+  background:linear-gradient(105deg,rgba(16,34,45,.96) 0%,rgba(16,34,45,.88) 45%,rgba(16,34,45,.55) 100%)}
+.hero .container{position:relative;z-index:2;max-width:1080px}
+.hero-inner{max-width:640px}
+.hero h1{color:#fff;font-size:clamp(32px,5vw,52px);margin:20px 0 24px}
+.hero h1 em{font-style:italic;color:#E8A883}
+.hero p.sub{color:#C8D8E4;font-size:clamp(17px,2vw,20px);font-weight:300;margin-bottom:38px;max-width:560px}
+.trust{display:flex;gap:26px;flex-wrap:wrap;margin-top:34px}
+.trust span{color:#8FA8B8;font-size:13.5px;display:flex;align-items:center;gap:8px}
+.trust b{color:#C8D8E4;font-weight:700}
+.tick{color:var(--terracota);font-weight:700}
+
+/* ===== SEÇÕES ESCURAS (noite) ===== */
+.dark{background:var(--petroleo-deep);color:#B8C8D4}
+.dark h2{color:#fff}
+.section{padding:96px 0}
+.grid-2{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.img-frame{border-radius:12px;overflow:hidden;box-shadow:0 24px 60px rgba(0,0,0,.45)}
+.img-frame img{width:100%;height:100%;object-fit:cover}
+
+/* Checklist de sintomas */
+.check-list{list-style:none;margin-top:28px}
+.check-list li{padding:13px 0 13px 40px;position:relative;border-bottom:1px solid rgba(255,255,255,.07);font-size:16.5px}
+.check-list li::before{content:'✓';position:absolute;left:0;top:12px;width:26px;height:26px;
+  background:rgba(194,84,45,.18);color:#E8A883;border-radius:50%;display:flex;align-items:center;
+  justify-content:center;font-size:14px;font-weight:700}
+.sec-title{font-size:clamp(28px,4vw,40px);margin:16px 0 20px}
+.after-note{margin-top:26px;font-family:'Lora',serif;font-style:italic;font-size:19px;color:#E8A883}
+
+/* Dados / agitação */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:28px;margin:56px 0}
+.stat{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.08);border-radius:12px;
+  padding:34px 28px;text-align:center}
+.stat .num{font-family:'Lora',serif;font-size:44px;color:var(--terracota);font-weight:700;line-height:1}
+.stat .num small{font-size:22px}
+.stat p{font-size:14.5px;margin-top:12px;color:#9FB4C2}
+.stat .src{font-size:11.5px;color:#5F7686;margin-top:8px;display:block}
+
+/* ===== TRANSIÇÃO AMANHECER ===== */
+.dawn{height:120px;background:linear-gradient(180deg,var(--petroleo-deep) 0%,var(--bege) 100%)}
+
+/* ===== SEÇÕES CLARAS (dia) ===== */
+.light{background:var(--bege)}
+.light h2{color:var(--petroleo)}
+.white{background:var(--branco)}
+.white h2{color:var(--petroleo)}
+
+/* ===== CAPA DO LIVRO EM CSS ===== */
+.book-wrap{display:flex;justify-content:center;perspective:1400px}
+.book{width:300px;height:424px;background:linear-gradient(160deg,#22475C 0%,var(--petroleo) 55%,#152E3C 100%);
+  border-radius:6px 14px 14px 6px;position:relative;transform:rotateY(-18deg) rotateX(3deg);
+  box-shadow:-30px 30px 60px rgba(27,58,75,.35),-4px 6px 16px rgba(0,0,0,.25);transition:transform .4s}
+.book:hover{transform:rotateY(-10deg) rotateX(2deg)}
+.book::before{content:'';position:absolute;left:0;top:0;bottom:0;width:7px;background:var(--terracota);
+  border-radius:6px 0 0 6px}
+.book::after{content:'';position:absolute;left:7px;top:0;bottom:0;width:3px;
+  background:linear-gradient(90deg,rgba(0,0,0,.35),transparent)}
+.book-inner{padding:46px 30px;height:100%;display:flex;flex-direction:column}
+.book .b-brand{font-size:9px;letter-spacing:2.5px;color:var(--terracota);font-weight:700;font-family:'Lato'}
+.book .b-title{font-family:'Lora',serif;color:#fff;font-size:33px;line-height:1.2;margin-top:24px}
+.book .b-line{width:60px;height:2px;background:var(--terracota);margin:20px 0}
+.book .b-sub{color:#C8D8E4;font-size:13.5px;font-weight:300;font-family:'Lato'}
+.book .b-tag{margin-top:auto;color:#8FA8B8;font-size:10px;font-style:italic;font-family:'Lato';line-height:1.6}
+
+/* ===== CONTEÚDO / CAPÍTULOS ===== */
+.chapters{display:grid;grid-template-columns:repeat(2,1fr);gap:18px;margin-top:48px}
+.chap{background:#fff;border:1px solid #E4DED6;border-radius:12px;padding:26px 28px;transition:.25s}
+.chap:hover{border-color:var(--terracota);transform:translateY(-3px);box-shadow:0 12px 28px rgba(27,58,75,.08)}
+.chap .c-num{font-family:'Lora',serif;color:var(--terracota);font-size:14px;font-weight:700;letter-spacing:1px}
+.chap h3{color:var(--petroleo);font-size:18.5px;margin:8px 0 8px}
+.chap p{font-size:14.5px;color:var(--cinza)}
+
+/* ===== BÔNUS ===== */
+.bonus-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:48px}
+.bonus{background:var(--petroleo);border-radius:12px;padding:36px 30px;color:#C8D8E4;position:relative;overflow:hidden}
+.bonus::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:var(--terracota)}
+.bonus .b-label{font-size:11px;letter-spacing:2px;font-weight:700;color:#E8A883;text-transform:uppercase}
+.bonus h3{color:#fff;font-size:20px;margin:12px 0 10px}
+.bonus p{font-size:14.5px}
+
+/* ===== QUOTE (textura) ===== */
+.quote-sec{position:relative;background:url('IMGs/textura.jpeg') center/cover;padding:110px 0;text-align:center}
+.quote-sec::before{content:'';position:absolute;inset:0;background:rgba(245,240,235,.55)}
+.quote-sec blockquote{position:relative;z-index:2;font-family:'Lora',serif;font-style:italic;
+  font-size:clamp(24px,3.4vw,34px);color:var(--petroleo);max-width:720px;margin:0 auto;line-height:1.45}
+.quote-sec cite{display:block;margin-top:24px;font-family:'Lato';font-style:normal;font-size:13px;
+  letter-spacing:2px;text-transform:uppercase;color:var(--terracota);font-weight:700}
+
+/* ===== PARA QUEM É ===== */
+.fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:48px}
+.fit{border-radius:12px;padding:38px 34px}
+.fit.yes{background:#fff;border:1px solid #E4DED6;border-top:5px solid var(--petroleo)}
+.fit.no{background:#FDF6F2;border:1px solid #F0DDD2;border-top:5px solid var(--terracota)}
+.fit h3{color:var(--petroleo);font-size:21px;margin-bottom:20px}
+.fit ul{list-style:none}
+.fit li{padding:9px 0 9px 30px;position:relative;font-size:15.5px}
+.fit.yes li::before{content:'✓';position:absolute;left:0;color:var(--petroleo);font-weight:700}
+.fit.no li::before{content:'✕';position:absolute;left:0;color:var(--terracota);font-weight:700}
+
+/* ===== OFERTA ===== */
+.offer-card{max-width:560px;margin:48px auto 0;background:#fff;border-radius:18px;overflow:hidden;
+  box-shadow:0 30px 80px rgba(27,58,75,.16);border:1px solid #E4DED6}
+.offer-head{background:var(--petroleo);padding:34px 40px;text-align:center}
+.offer-head p{color:#C8D8E4;font-size:14px;letter-spacing:1px}
+.offer-head h3{color:#fff;font-family:'Lora',serif;font-size:26px;margin-top:6px}
+.offer-body{padding:40px}
+.offer-body ul{list-style:none;margin-bottom:32px}
+.offer-body li{padding:11px 0 11px 34px;position:relative;font-size:15.5px;border-bottom:1px dashed #EAE4DC}
+.offer-body li::before{content:'✓';position:absolute;left:0;width:22px;height:22px;background:rgba(27,58,75,.08);
+  color:var(--petroleo);border-radius:50%;display:flex;align-items:center;justify-content:center;
+  font-size:12px;font-weight:700;top:12px}
+.price-row{text-align:center;margin-bottom:28px}
+.price-old{color:#A8B4BE;text-decoration:line-through;font-size:17px}
+.price-now{font-family:'Lora',serif;font-size:56px;color:var(--petroleo);font-weight:700;line-height:1.1}
+.price-now small{font-size:22px;vertical-align:super}
+.price-note{font-size:13.5px;color:var(--cinza-claro)}
+.offer-body .btn{width:100%;text-align:center;font-size:18px;padding:20px}
+.guarantee{display:flex;gap:16px;align-items:flex-start;background:var(--bege);border-radius:10px;
+  padding:20px 22px;margin-top:28px}
+.guarantee .g-ico{font-size:26px;line-height:1}
+.guarantee p{font-size:13.5px;line-height:1.6}
+.guarantee b{color:var(--petroleo)}
+
+/* ===== FAQ ===== */
+.faq{max-width:760px;margin:48px auto 0}
+.faq details{background:#fff;border:1px solid #E4DED6;border-radius:10px;margin-bottom:12px;overflow:hidden}
+.faq summary{padding:20px 24px;cursor:pointer;font-weight:700;color:var(--petroleo);font-size:16px;
+  list-style:none;position:relative;padding-right:52px}
+.faq summary::after{content:'+';position:absolute;right:22px;top:50%;transform:translateY(-50%);
+  font-size:24px;color:var(--terracota);font-weight:400;transition:.25s}
+.faq details[open] summary::after{transform:translateY(-50%) rotate(45deg)}
+.faq .faq-body{padding:0 24px 22px;font-size:15px;line-height:1.75}
+
+/* ===== CTA FINAL ===== */
+.final{position:relative;background:url('IMGs/caminho.jpeg') center/cover;padding:140px 0;text-align:center}
+.final::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(16,34,45,.72),rgba(16,34,45,.82))}
+.final .container{position:relative;z-index:2}
+.final h2{color:#fff;font-size:clamp(30px,4.5vw,46px);max-width:720px;margin:0 auto 20px}
+.final p{color:#C8D8E4;font-size:18px;font-weight:300;max-width:560px;margin:0 auto 40px}
+
+/* ===== FOOTER ===== */
+footer{background:var(--petroleo-deep);padding:48px 0 40px;text-align:center}
+footer .f-logo{font-family:'Lora',serif;color:#fff;font-size:19px}
+footer .f-logo span{color:var(--terracota)}
+footer p{color:#5F7686;font-size:12.5px;margin-top:14px;max-width:680px;margin-left:auto;margin-right:auto;line-height:1.7}
+footer .legal{margin-top:22px;font-size:11.5px;color:#46596A}
+
+/* ===== REVEAL ANIMATION ===== */
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.on{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.book{transform:none}}
+
+/* ===== RESPONSIVO ===== */
+@media(max-width:860px){
+  .grid-2{grid-template-columns:1fr;gap:40px}
+  .stats{grid-template-columns:1fr;gap:16px}
+  .chapters{grid-template-columns:1fr}
+  .bonus-grid{grid-template-columns:1fr}
+  .fit-grid{grid-template-columns:1fr}
+  .section{padding:64px 0}
+  .hero{min-height:auto;padding:130px 0 70px}
+  .offer-body{padding:28px 22px}
+  .book{width:250px;height:354px}
+  .book .b-title{font-size:27px}
+}
+</style>
+
+<!-- ===== META PIXEL (Instagram/Facebook) — troque SEU_PIXEL_META quando tiver o ID ===== -->
+<script>
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,
+document,'script','https://connect.facebook.net/en_US/fbevents.js');
+fbq('init', 'SEU_PIXEL_META');
+fbq('track', 'PageView');
+fbq('track', 'ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Burnout em Silencio', content_type:'product', value:57.00, currency:'BRL'});
+</script>
+<noscript><img height="1" width="1" style="display:none"
+src="https://www.facebook.com/tr?id=SEU_PIXEL_META&ev=PageView&noscript=1"/></noscript>
+
+<!-- ===== TIKTOK PIXEL — Pixel Medinas: Landing Burnout ===== -->
+<script>
+!function (w, d, t) {
+w.TiktokAnalyticsObject=t;var ttq=w[t]=w[t]||[];ttq.methods=["page","track","identify","instances","debug","on","off","once","ready","alias","group","enableCookie","disableCookie","holdConsent","revokeConsent","grantConsent"],ttq.setAndDefer=function(t,e){t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}};for(var i=0;i<ttq.methods.length;i++)ttq.setAndDefer(ttq,ttq.methods[i]);ttq.instance=function(t){for(var e=ttq._i[t]||[],n=0;n<ttq.methods.length;n++)ttq.setAndDefer(e,ttq.methods[n]);return e},ttq.load=function(e,n){var r="https://analytics.tiktok.com/i18n/pixel/events.js",o=n&&n.partner;ttq._i=ttq._i||{},ttq._i[e]=[],ttq._i[e]._u=r,ttq._t=ttq._t||{},ttq._t[e]=+new Date,ttq._o=ttq._o||{},ttq._o[e]=n||{};var i=document.createElement("script");i.type="text/javascript",i.async=!0,i.src=r+"?sdkid="+e+"&lib="+t;var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(i,a)};
+ttq.load('D93M0A3C77UARCKAUFB0');
+ttq.page();
+ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Burnout em Silencio', content_type:'product', value:57.00, currency:'BRL'});
+}(window, document, 'ttq');
+</script>
+
+<!-- ===== RASTREIO DE CLIQUE NOS BOTÕES DE COMPRA ===== -->
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  document.querySelectorAll('a[href*="infinitepay"], a[href*="checkout.infinitepay"]').forEach(function(el){
+    el.addEventListener('click', function(){
+      if (window.fbq) fbq('track','InitiateCheckout',{value:57.00,currency:'BRL'});
+      if (window.ttq) ttq.track('InitiateCheckout',{value:57.00,currency:'BRL'});
+    });
+  });
+});
+</script>
+</head>
+<body>
+
+<!-- TOPBAR -->
+<nav class="topbar">
+  <div class="container">
+    <a class="brand" href="#">
+      <div class="brand-mark">M</div>
+      <div class="brand-text">
+        <span class="brand-name">MEDINAS</span>
+        <span class="brand-sub">PRODUÇÕES</span>
+      </div>
+    </a>
+    <a class="mini" href="#oferta">QUERO O GUIA</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header class="hero">
+  <div class="container">
+    <div class="hero-inner">
+      <span class="eyebrow">Para autônomos, MEIs e quem trabalha por conta própria</span>
+      <h1>Você não pode parar.<br>Mas também <em>não aguenta continuar assim.</em></h1>
+      <p class="sub">O guia prático para reconhecer, desacelerar e se recuperar do esgotamento — sem abandonar seus clientes, sua renda ou tudo o que você construiu.</p>
+      <a class="btn" href="#oferta">Quero sair do modo sobrevivência</a>
+      <span class="btn-sub">Acesso imediato · Leitura no celular ou computador</span>
+      <div class="trust">
+        <span><b class="tick">✓</b> Garantia de <b>7 dias</b></span>
+        <span><b class="tick">✓</b> Pagamento via <b>Pix ou cartão</b></span>
+        <span><b class="tick">✓</b> Compra <b>100% segura</b></span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<!-- IDENTIFICAÇÃO / DOR -->
+<section class="dark section">
+  <div class="container grid-2">
+    <div class="reveal">
+      <span class="eyebrow">Sinais que você aprendeu a ignorar</span>
+      <h2 class="sec-title">Você se reconhece em algum destes pontos?</h2>
+      <ul class="check-list">
+        <li>Dorme 7, 8 horas — e acorda <b>exausto</b> do mesmo jeito</li>
+        <li>Tarefas que levavam 20 minutos agora levam o <b>dobro</b></li>
+        <li>Responde cliente às 23h porque "não pode perder o projeto"</li>
+        <li>Sente <b>culpa</b> quando descansa — como se estivesse falhando</li>
+        <li>Perdeu o entusiasmo pelo trabalho que antes te movia</li>
+        <li>Está mais <b>irritado</b>, mais frio, mais distante das pessoas</li>
+        <li>Não lembra a última vez que desligou de verdade</li>
+        <li>Sente que opera no <b>modo sobrevivência</b> há meses</li>
+      </ul>
+      <p class="after-note">Se você marcou 3 ou mais... este guia foi escrito para você.</p>
+    </div>
+    <div class="img-frame reveal"><img src="IMGs/exaustao.jpeg" alt="Exaustão silenciosa de quem trabalha por conta própria" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- AGITAÇÃO / DADOS -->
+<section class="dark section" style="background:var(--petroleo)">
+  <div class="container">
+    <div style="max-width:680px" class="reveal">
+      <span class="eyebrow">O burnout que ninguém vê</span>
+      <h2 class="sec-title">O esgotamento do autônomo é estruturalmente invisível</h2>
+      <p>Quando um funcionário CLT entra em burnout, existe RH, atestado, afastamento pelo INSS. Quando <b style="color:#fff">você</b> entra em burnout... não existe nada. Sem rede de proteção. Sem colegas para notar. Sem licença remunerada. E ainda existe uma cultura que diz que <i>"empreendedor não pode reclamar — foi você quem escolheu"</i>.</p>
+    </div>
+    <div class="stats reveal">
+      <div class="stat"><div class="num">493<small>%</small></div><p>de crescimento nos afastamentos por burnout na última década</p><span class="src">Fonte: INSS / Ministério da Previdência</span></div>
+      <div class="stat"><div class="num">500<small> mil</small></div><p>afastamentos por transtornos mentais no Brasil em um único ano</p><span class="src">Fonte: INSS, 2022</span></div>
+      <div class="stat"><div class="num">2019</div><p>ano em que a OMS reconheceu o burnout como síndrome ocupacional</p><span class="src">Fonte: Organização Mundial da Saúde</span></div>
+    </div>
+    <div class="container grid-2" style="padding:0;margin-top:20px">
+      <div class="img-frame reveal"><img src="IMGs/notificacoes.jpeg" alt="Disponibilidade permanente e cobrança constante" loading="lazy"></div>
+      <div class="reveal">
+        <h2 class="sec-title" style="font-size:28px">E esses números só contam quem tem carteira assinada.</h2>
+        <p>O seu burnout não entra em estatística nenhuma. Não gera atestado. Não pausa boleto. É por isso que ele avança em silêncio — disfarçado de "fase difícil", de "correria", de "depois melhora".</p>
+        <p style="margin-top:16px">Ignorar não é opção: a neurociência mostra que o esgotamento crônico <b style="color:#fff">altera fisicamente o cérebro</b> — memória, foco, decisões e regulação emocional. A boa notícia? <b style="color:#E8A883">Essas alterações são reversíveis.</b></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TRANSIÇÃO -->
+<div class="dawn"></div>
+
+<!-- VIRADA / SOLUÇÃO -->
+<section class="light section">
+  <div class="container grid-2">
+    <div class="reveal">
+      <span class="eyebrow">Existe um caminho no meio</span>
+      <h2 class="sec-title">Entre ignorar tudo e largar tudo, existe um terceiro caminho.</h2>
+      <p>A internet só oferece dois conselhos: <i>"aguenta que uma hora passa"</i> ou <i>"larga tudo e recomeça"</i>. Nenhum dos dois serve para quem paga as contas com o próprio trabalho.</p>
+      <p style="margin-top:16px"><b style="color:var(--petroleo)">Burnout em Silêncio</b> foi escrito para a sua realidade: recuperação <b style="color:var(--petroleo)">dentro</b> da rotina que você tem — não da rotina ideal que você não tem. Com ciência de verdade, ferramentas práticas e zero promessa milagrosa.</p>
+    </div>
+    <div class="img-frame reveal"><img src="IMGs/manha.jpeg" alt="Recomeço com controle e clareza" loading="lazy"></div>
+  </div>
+</section>
+
+<!-- O PRODUTO -->
+<section class="white section" id="guia">
+  <div class="container grid-2">
+    <div class="book-wrap reveal">
+      <div class="book">
+        <div class="book-inner">
+          <span class="b-brand">MEDINAS PRODUÇÕES</span>
+          <div class="b-title">Burnout em<br>Silêncio</div>
+          <div class="b-line"></div>
+          <span class="b-sub">O Guia para Quem<br>Não Pode Parar</span>
+          <span class="b-tag">Como reconhecer, desacelerar e se recuperar do esgotamento sem abandonar tudo</span>
+        </div>
+      </div>
+    </div>
+    <div class="reveal">
+      <span class="eyebrow">O guia completo</span>
+      <h2 class="sec-title">Um manual honesto de recuperação para quem trabalha por conta própria</h2>
+      <p>São <b style="color:var(--petroleo)">8 capítulos + teste de autoavaliação + protocolo de emergência + 3 bônus práticos</b>, escritos com base em pesquisas de neurociência e psicologia ocupacional (Maslach, Matthew Walker, John Cacioppo) — traduzidos para a vida real de quem é o próprio negócio.</p>
+      <p style="margin-top:16px">Sem "acorde às 5h". Sem "apenas medite". Sem culpar você pelo que é estrutural. Ferramentas que cabem na agenda de quem não pode simplesmente tirar 30 dias de férias.</p>
+    </div>
+  </div>
+</section>
+
+<!-- O QUE VOCÊ VAI ENCONTRAR -->
+<section class="light section">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto" class="reveal">
+      <span class="eyebrow">Dentro do guia</span>
+      <h2 class="sec-title">O que você vai encontrar</h2>
+    </div>
+    <div class="chapters">
+      <div class="chap reveal"><span class="c-num">CAPÍTULO 1</span><h3>Reconheça: você está em burnout?</h3><p>Os 12 sinais detalhados com base neurológica + teste de autoavaliação com 20 perguntas e interpretação por faixas.</p></div>
+      <div class="chap reveal"><span class="c-num">CAPÍTULO 2</span><h3>Entenda por que você chegou até aqui</h3><p>As 6 causas reais do esgotamento do autônomo — da disponibilidade permanente à instabilidade financeira.</p></div>
+      <div class="chap reveal"><span class="c-num">CAPÍTULO 3</span><h3>Protocolo de emergência: as próximas 24h</h3><p>O que fazer quando você está no limite agora — 6 passos + técnica de respiração 4-7-8 para crises.</p></div>
+      <div class="chap reveal"><span class="c-num">CAPÍTULO 4</span><h3>Recuperação sem parar de trabalhar</h3><p>Microdescansos, sono e movimento com base científica — dentro da rotina que você realmente tem.</p></div>
+      <div class="chap reveal"><span class="c-num">CAPÍTULO 5</span><h3>Limites são estratégia, não fraqueza</h3><p>5 scripts prontos para dizer não a clientes sem perder o cliente — com análise de por que cada um funciona.</p></div>
+      <div class="chap reveal"><span class="c-num">CAPÍTULO 6</span><h3>A mente que sabota</h3><p>Catastrofização, síndrome do impostor e ruminação — com técnicas práticas de interrupção de cada padrão.</p></div>
+      <div class="chap reveal"><span class="c-num">CAPÍTULO 7</span><h3>Conexão e solidão</h3><p>O isolamento silencioso de quem trabalha só — e 4 formas realistas de reconectar sem forçar.</p></div>
+      <div class="chap reveal"><span class="c-num">CAPÍTULO 8</span><h3>Reconstrução</h3><p>A vida depois do burnout: rotina redesenhada, rituais de transição e precificação como proteção à saúde.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- BÔNUS -->
+<section class="white section">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto" class="reveal">
+      <span class="eyebrow">E ainda</span>
+      <h2 class="sec-title">3 bônus para colocar em prática</h2>
+    </div>
+    <div class="bonus-grid">
+      <div class="bonus reveal"><span class="b-label">Bônus 1</span><h3>Diário de Recuperação</h3><p>30 dias de autoconhecimento guiado, dividido em 4 semanas: reconhecimento, padrões, experimentos e consolidação.</p></div>
+      <div class="bonus reveal"><span class="b-label">Bônus 2</span><h3>Protocolo Semanal Anti-Burnout</h3><p>Um mapa de intenções para cada dia da semana — para manter o equilíbrio antes que ele quebre.</p></div>
+      <div class="bonus reveal"><span class="b-label">Bônus 3</span><h3>Quando Buscar Ajuda Profissional</h3><p>Os sinais de que é hora de apoio especializado + recursos gratuitos e acessíveis no Brasil.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUOTE -->
+<section class="quote-sec">
+  <blockquote>"Você não estava fraco.<br>Você estava sozinho."</blockquote>
+  <cite>— Burnout em Silêncio</cite>
+</section>
+
+<!-- PARA QUEM É -->
+<section class="light section">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto" class="reveal">
+      <span class="eyebrow">Transparência total</span>
+      <h2 class="sec-title">Este guia é para você?</h2>
+    </div>
+    <div class="fit-grid">
+      <div class="fit yes reveal">
+        <h3>É para você, se…</h3>
+        <ul>
+          <li>É autônomo, MEI, freelancer ou empreendedor solo</li>
+          <li>Sente que está no limite, mas não pode simplesmente parar</li>
+          <li>Quer ferramentas práticas, não frases motivacionais</li>
+          <li>Prefere ciência de verdade a promessas milagrosas</li>
+          <li>Quer se recuperar sem destruir o que construiu</li>
+        </ul>
+      </div>
+      <div class="fit no reveal">
+        <h3>Não é para você, se…</h3>
+        <ul>
+          <li>Procura fórmula mágica de transformação em 7 dias</li>
+          <li>Espera que um ebook substitua terapia ou tratamento médico</li>
+          <li>Quer conteúdo motivacional sem aplicação prática</li>
+          <li>Não está disposto a fazer nenhuma mudança na rotina</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- OFERTA -->
+<section class="white section" id="oferta">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto" class="reveal">
+      <span class="eyebrow">Acesso imediato</span>
+      <h2 class="sec-title">Comece sua recuperação hoje</h2>
+    </div>
+    <div class="offer-card reveal">
+      <div class="offer-head">
+        <p>EBOOK COMPLETO + 3 BÔNUS</p>
+        <h3>Burnout em Silêncio</h3>
+      </div>
+      <div class="offer-body">
+        <ul>
+          <li><b>Ebook completo</b> — 8 capítulos com base científica</li>
+          <li><b>Teste de autoavaliação</b> com 20 perguntas e interpretação</li>
+          <li><b>Protocolo de emergência</b> para as próximas 24 horas</li>
+          <li><b>5 scripts prontos</b> para estabelecer limites com clientes</li>
+          <li><b>Bônus 1:</b> Diário de Recuperação — 30 dias guiados</li>
+          <li><b>Bônus 2:</b> Protocolo Semanal Anti-Burnout</li>
+          <li><b>Bônus 3:</b> Guia de quando buscar ajuda profissional</li>
+        </ul>
+        <div class="price-row">
+          <div class="price-old">De R$ 97</div>
+          <div class="price-now"><small>R$</small> 57</div>
+          <div class="price-note">Pagamento único · Pix ou cartão · Acesso vitalício</div>
+        </div>
+        <a class="btn" href="https://checkout.infinitepay.io/medina_pay?items=%5B%7B%22name%22%3A%22Burnout%20em%20Silencio%22%2C%22price%22%3A5700%2C%22quantity%22%3A1%7D%5DSEU_LINK_KIWIFY_AQUIredirect_url=https%3A%2F%2Fmedinasproducoes.netlify.app%2Fobrigado.html">Quero meu acesso agora</a>
+        <div class="guarantee">
+          <div class="g-ico">🛡️</div>
+          <p><b>Garantia incondicional de 7 dias.</b> Se o guia não fizer sentido para você, devolvemos 100% do valor. Sem perguntas, sem burocracia — direto pela plataforma Kiwify.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="light section">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto" class="reveal">
+      <span class="eyebrow">Dúvidas frequentes</span>
+      <h2 class="sec-title">Perguntas que você pode estar se fazendo</h2>
+    </div>
+    <div class="faq reveal">
+      <details><summary>Como recebo o ebook após a compra?</summary><div class="faq-body">O acesso é imediato. Assim que o pagamento for confirmado (Pix confirma na hora), você recebe um e-mail da Kiwify com o link para baixar o ebook em PDF. Pode ler no celular, tablet ou computador.</div></details>
+      <details><summary>Este ebook substitui terapia ou tratamento médico?</summary><div class="faq-body">Não — e somos transparentes sobre isso dentro do próprio guia. O ebook é um recurso educativo e prático de autoconhecimento. Se você está em sofrimento intenso, o Bônus 3 traz orientações e recursos para buscar apoio profissional, incluindo opções gratuitas no Brasil.</div></details>
+      <details><summary>Não tenho tempo nem para respirar. Vou conseguir aplicar?</summary><div class="faq-body">O guia foi desenhado exatamente para quem não tem tempo. As ferramentas cabem em janelas de 5 a 25 minutos, e há um capítulo inteiro sobre recuperação dentro da rotina — sem precisar parar de trabalhar. Você pode começar pelo Protocolo de Emergência e aplicar hoje mesmo.</div></details>
+      <details><summary>E se eu não gostar do conteúdo?</summary><div class="faq-body">Você tem 7 dias de garantia incondicional. Basta solicitar o reembolso pela própria Kiwify e devolvemos 100% do valor, sem perguntas.</div></details>
+      <details><summary>O pagamento é seguro?</summary><div class="faq-body">Sim. Todo o processamento é feito pela Kiwify, uma das maiores plataformas de produtos digitais do Brasil, com criptografia e proteção de dados. Aceitamos Pix e cartão de crédito.</div></details>
+      <details><summary>Sou CLT, mas me identifico com tudo isso. Serve para mim?</summary><div class="faq-body">A ciência do burnout é a mesma — sinais, causas neurológicas e ferramentas de recuperação se aplicam a qualquer pessoa esgotada. O diferencial é que os exemplos, scripts e estratégias foram escritos para a realidade de quem trabalha por conta própria. Se você se identificou, o conteúdo vai te servir.</div></details>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="final">
+  <div class="container">
+    <h2>O caminho de volta começa com uma escolha pequena.</h2>
+    <p>Você já carregou tudo sozinho por tempo demais. Deixe este guia carregar um pouco com você.</p>
+    <a class="btn" href="https://checkout.infinitepay.io/medina_pay?items=%5B%7B%22name%22%3A%22Burnout%20em%20Silencio%22%2C%22price%22%3A5700%2C%22quantity%22%3A1%7D%5DSEU_LINK_KIWIFY_AQUIredirect_url=https%3A%2F%2Fmedinasproducoes.netlify.app%2Fobrigado.html">Começar minha recuperação — R$ 57</a>
+    <span class="btn-sub" style="color:#8FA8B8">Garantia de 7 dias · Acesso imediato · Pix ou cartão</span>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="container">
+    <div class="f-logo">Medinas <span>Produções</span></div>
+    <p>Este produto tem caráter educativo e informativo e não substitui acompanhamento psicológico, psiquiátrico ou médico profissional. Em caso de sofrimento intenso, procure ajuda especializada. CVV: 188 (ligação gratuita, 24h).</p>
+    <p class="legal">© 2026 Medinas Produções — Todos os direitos reservados · medinasproducoes.com.br</p>
+  </div>
+</footer>
+
+<script>
+const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
