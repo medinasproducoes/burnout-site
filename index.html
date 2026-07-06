@@ -239,17 +239,7 @@ ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Bur
 }(window, document, 'ttq');
 </script>
 
-<!-- ===== RASTREIO DE CLIQUE NOS BOTÕES DE COMPRA ===== -->
-<script>
-document.addEventListener('DOMContentLoaded', function(){
-  document.querySelectorAll('a[href*="infinitepay"], a[href*="checkout.infinitepay"]').forEach(function(el){
-    el.addEventListener('click', function(){
-      if (window.fbq) fbq('track','InitiateCheckout',{value:57.00,currency:'BRL'});
-      if (window.ttq) ttq.track('InitiateCheckout',{value:57.00,currency:'BRL'});
-    });
-  });
-});
-</script>
+<!-- InitiateCheckout é rastreado dentro da função iniciarCompra() -->
 </head>
 <body>
 
@@ -469,7 +459,7 @@ document.addEventListener('DOMContentLoaded', function(){
           <div class="price-now"><small>R$</small> 57</div>
           <div class="price-note">Pagamento único · Pix ou cartão · Acesso vitalício</div>
         </div>
-        <a class="btn" href="https://checkout.infinitepay.io/medina_pay?items=%5B%7B%22name%22%3A%22Burnout%20em%20Silencio%22%2C%22price%22%3A5700%2C%22quantity%22%3A1%7D%5DSEU_LINK_KIWIFY_AQUIredirect_url=https%3A%2F%2Fmedinasproducoes.netlify.app%2Fobrigado.html">Quero meu acesso agora</a>
+        <button class="btn" id="btn-comprar-1" onclick="iniciarCompra(this)">Quero meu acesso agora</button>
         <div class="guarantee">
           <div class="g-ico">🛡️</div>
           <p><b>Garantia incondicional de 7 dias.</b> Se o guia não fizer sentido para você, devolvemos 100% do valor. Sem perguntas, sem burocracia — direto pela plataforma Kiwify.</p>
@@ -502,7 +492,7 @@ document.addEventListener('DOMContentLoaded', function(){
   <div class="container">
     <h2>O caminho de volta começa com uma escolha pequena.</h2>
     <p>Você já carregou tudo sozinho por tempo demais. Deixe este guia carregar um pouco com você.</p>
-    <a class="btn" href="https://checkout.infinitepay.io/medina_pay?items=%5B%7B%22name%22%3A%22Burnout%20em%20Silencio%22%2C%22price%22%3A5700%2C%22quantity%22%3A1%7D%5DSEU_LINK_KIWIFY_AQUIredirect_url=https%3A%2F%2Fmedinasproducoes.netlify.app%2Fobrigado.html">Começar minha recuperação — R$ 57</a>
+    <button class="btn" id="btn-comprar-2" onclick="iniciarCompra(this)">Começar minha recuperação — R$ 57</button>
     <span class="btn-sub" style="color:#8FA8B8">Garantia de 7 dias · Acesso imediato · Pix ou cartão</span>
   </div>
 </section>
@@ -519,6 +509,39 @@ document.addEventListener('DOMContentLoaded', function(){
 <script>
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+</script>
+<script>
+async function iniciarCompra(btn) {
+  const textoOriginal = btn.textContent;
+  btn.textContent = 'Gerando pagamento...';
+  btn.disabled = true;
+  btn.style.opacity = '0.7';
+  btn.style.cursor = 'wait';
+
+  try {
+    const res = await fetch('/.netlify/functions/create-payment', { method: 'POST' });
+    const data = await res.json();
+
+    if (data.url) {
+      // Dispara InitiateCheckout nos pixels antes de sair da página
+      if (window.fbq) fbq('track', 'InitiateCheckout', { value: 57.00, currency: 'BRL' });
+      if (window.ttq) ttq.track('InitiateCheckout', { value: 57.00, currency: 'BRL' });
+
+      window.location.href = data.url;
+    } else {
+      throw new Error('Sem URL na resposta');
+    }
+  } catch (err) {
+    console.error('Erro ao gerar pagamento:', err);
+    btn.textContent = 'Erro — tente novamente';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+    setTimeout(() => {
+      btn.textContent = textoOriginal;
+    }, 3000);
+  }
+}
 </script>
 </body>
 </html>
