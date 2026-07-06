@@ -164,6 +164,9 @@ img{max-width:100%;display:block}
 .price-now{font-family:'Lora',serif;font-size:56px;color:var(--petroleo);font-weight:700;line-height:1.1}
 .price-now small{font-size:22px;vertical-align:super}
 .price-note{font-size:13.5px;color:var(--cinza-claro)}
+.pix-highlight{background:#EEF7F0;border:1px solid #C9E8D1;color:#1F5A38;font-size:13px;line-height:1.6;
+  padding:12px 16px;border-radius:8px;margin-top:14px;text-align:left}
+.pix-highlight b{color:#146C36}
 .offer-body .btn{width:100%;text-align:center;font-size:18px;padding:20px}
 .guarantee{display:flex;gap:16px;align-items:flex-start;background:var(--bege);border-radius:10px;
   padding:20px 22px;margin-top:28px}
@@ -268,7 +271,7 @@ ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Bur
       <span class="btn-sub">Acesso imediato · Leitura no celular ou computador</span>
       <div class="trust">
         <span><b class="tick">✓</b> Garantia de <b>7 dias</b></span>
-        <span><b class="tick">✓</b> Pagamento via <b>Pix ou cartão</b></span>
+        <span><b class="tick">✓</b> Pix <b>sem taxas</b> ou cartão em até 12x</span>
         <span><b class="tick">✓</b> Compra <b>100% segura</b></span>
       </div>
     </div>
@@ -457,12 +460,13 @@ ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Bur
         <div class="price-row">
           <div class="price-old">De R$ 97</div>
           <div class="price-now"><small>R$</small> 57</div>
-          <div class="price-note">Pagamento único · Pix ou cartão · Acesso vitalício</div>
+          <div class="price-note">Pagamento único · Acesso vitalício</div>
+          <div class="pix-highlight">💡 Pague via <b>Pix</b> e garanta o valor exato — aprovação na hora, sem juros. Cartão parcelado também disponível (com acréscimo da operadora).</div>
         </div>
         <button class="btn" id="btn-comprar-1" onclick="iniciarCompra(this)">Quero meu acesso agora</button>
         <div class="guarantee">
           <div class="g-ico">🛡️</div>
-          <p><b>Garantia incondicional de 7 dias.</b> Se o guia não fizer sentido para você, devolvemos 100% do valor. Sem perguntas, sem burocracia — direto pela plataforma Kiwify.</p>
+          <p><b>Garantia incondicional de 7 dias.</b> Se o guia não fizer sentido para você, devolvemos 100% do valor. Sem perguntas, sem burocracia.</p>
         </div>
       </div>
     </div>
@@ -477,11 +481,11 @@ ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Bur
       <h2 class="sec-title">Perguntas que você pode estar se fazendo</h2>
     </div>
     <div class="faq reveal">
-      <details><summary>Como recebo o ebook após a compra?</summary><div class="faq-body">O acesso é imediato. Assim que o pagamento for confirmado (Pix confirma na hora), você recebe um e-mail da Kiwify com o link para baixar o ebook em PDF. Pode ler no celular, tablet ou computador.</div></details>
+      <details><summary>Como recebo o ebook após a compra?</summary><div class="faq-body">O acesso é imediato. Pagando via Pix, a confirmação é na hora — você é redirecionado automaticamente para a página de download, onde o botão para baixar o PDF aparece assim que o pagamento é reconhecido. Pode ler no celular, tablet ou computador.</div></details>
       <details><summary>Este ebook substitui terapia ou tratamento médico?</summary><div class="faq-body">Não — e somos transparentes sobre isso dentro do próprio guia. O ebook é um recurso educativo e prático de autoconhecimento. Se você está em sofrimento intenso, o Bônus 3 traz orientações e recursos para buscar apoio profissional, incluindo opções gratuitas no Brasil.</div></details>
       <details><summary>Não tenho tempo nem para respirar. Vou conseguir aplicar?</summary><div class="faq-body">O guia foi desenhado exatamente para quem não tem tempo. As ferramentas cabem em janelas de 5 a 25 minutos, e há um capítulo inteiro sobre recuperação dentro da rotina — sem precisar parar de trabalhar. Você pode começar pelo Protocolo de Emergência e aplicar hoje mesmo.</div></details>
-      <details><summary>E se eu não gostar do conteúdo?</summary><div class="faq-body">Você tem 7 dias de garantia incondicional. Basta solicitar o reembolso pela própria Kiwify e devolvemos 100% do valor, sem perguntas.</div></details>
-      <details><summary>O pagamento é seguro?</summary><div class="faq-body">Sim. Todo o processamento é feito pela Kiwify, uma das maiores plataformas de produtos digitais do Brasil, com criptografia e proteção de dados. Aceitamos Pix e cartão de crédito.</div></details>
+      <details><summary>E se eu não gostar do conteúdo?</summary><div class="faq-body">Você tem 7 dias de garantia incondicional. Basta entrar em contato pelo e-mail de suporte e devolvemos 100% do valor, sem perguntas.</div></details>
+      <details><summary>O pagamento é seguro?</summary><div class="faq-body">Sim. Todo o processamento é feito pela InfinitePay, plataforma de pagamentos regulamentada pelo Banco Central, com criptografia e proteção de dados. Aceitamos Pix e cartão de crédito em até 12x.</div></details>
       <details><summary>Sou CLT, mas me identifico com tudo isso. Serve para mim?</summary><div class="faq-body">A ciência do burnout é a mesma — sinais, causas neurológicas e ferramentas de recuperação se aplicam a qualquer pessoa esgotada. O diferencial é que os exemplos, scripts e estratégias foram escritos para a realidade de quem trabalha por conta própria. Se você se identificou, o conteúdo vai te servir.</div></details>
     </div>
   </div>
@@ -493,7 +497,7 @@ ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Bur
     <h2>O caminho de volta começa com uma escolha pequena.</h2>
     <p>Você já carregou tudo sozinho por tempo demais. Deixe este guia carregar um pouco com você.</p>
     <button class="btn" id="btn-comprar-2" onclick="iniciarCompra(this)">Começar minha recuperação — R$ 57</button>
-    <span class="btn-sub" style="color:#8FA8B8">Garantia de 7 dias · Acesso imediato · Pix ou cartão</span>
+    <span class="btn-sub" style="color:#8FA8B8">Garantia de 7 dias · Pix sem taxas ou cartão em até 12x</span>
   </div>
 </section>
 
