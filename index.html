@@ -198,7 +198,33 @@ footer .f-logo span{color:var(--terracota)}
 footer p{color:#5F7686;font-size:12.5px;margin-top:14px;max-width:680px;margin-left:auto;margin-right:auto;line-height:1.7}
 footer .legal{margin-top:22px;font-size:11.5px;color:#46596A}
 
-/* ===== REVEAL ANIMATION ===== */
+/* ===== TESTE INTERATIVO ===== */
+.quiz{max-width:680px;margin:0 auto}
+.quiz-q{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:14px;padding:28px 32px;margin-bottom:14px}
+.quiz-q p{font-size:16.5px;color:#E8F0F5;margin-bottom:16px;font-weight:500}
+.quiz-btns{display:flex;gap:10px}
+.quiz-btn{flex:1;padding:11px 0;border:1.5px solid rgba(255,255,255,.18);background:transparent;color:#C8D8E4;
+  border-radius:8px;cursor:pointer;font-family:'Lato';font-size:14.5px;font-weight:700;transition:.2s}
+.quiz-btn:hover{border-color:var(--terracota);color:#fff;background:rgba(194,84,45,.12)}
+.quiz-btn.sim{border-color:var(--terracota);background:rgba(194,84,45,.18);color:#E8A883}
+.quiz-btn.nao{border-color:rgba(255,255,255,.3);background:rgba(255,255,255,.06);color:#8FA8B8}
+.quiz-result{display:none;background:rgba(194,84,45,.12);border:1.5px solid rgba(194,84,45,.3);
+  border-radius:14px;padding:34px;text-align:center;margin-top:20px}
+.quiz-result.show{display:block}
+.quiz-result .res-nivel{font-family:'Lora',serif;font-size:28px;color:#E8A883;margin-bottom:12px}
+.quiz-result .res-texto{font-size:15.5px;color:#C8D8E4;line-height:1.7;margin-bottom:24px}
+
+/* ===== QUEM CRIOU ===== */
+.autor{display:flex;gap:48px;align-items:flex-start;max-width:820px;margin:0 auto}
+.autor-icon{width:80px;height:80px;background:var(--terracota);border-radius:50%;display:flex;
+  align-items:center;justify-content:center;font-family:'Lora',serif;font-weight:700;font-size:36px;
+  color:#fff;flex-shrink:0;box-shadow:0 8px 24px rgba(194,84,45,.3)}
+.autor blockquote{font-family:'Lora',serif;font-style:italic;font-size:20px;color:var(--petroleo);
+  line-height:1.55;margin-bottom:18px;border-left:3px solid var(--terracota);padding-left:20px}
+.autor p{font-size:15.5px;color:var(--cinza);line-height:1.75}
+.autor cite{display:block;margin-top:16px;font-size:13px;font-weight:700;letter-spacing:1.5px;
+  text-transform:uppercase;color:var(--terracota)}
+@media(max-width:640px){.autor{flex-direction:column;gap:24px}}
 .reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
 .reveal.on{opacity:1;transform:none}
 @media (prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}.book{transform:none}}
@@ -270,8 +296,8 @@ ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Bur
       <a class="btn" href="#oferta">Quero sair do modo sobrevivência</a>
       <span class="btn-sub">Acesso imediato · Leitura no celular ou computador</span>
       <div class="trust">
-        <span><b class="tick">✓</b> Garantia de <b>7 dias</b></span>
         <span><b class="tick">✓</b> Pix <b>sem taxas</b> ou cartão em até 12x</span>
+        <span><b class="tick">✓</b> Acesso <b>imediato</b> após pagamento</span>
         <span><b class="tick">✓</b> Compra <b>100% segura</b></span>
       </div>
     </div>
@@ -300,9 +326,31 @@ ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Bur
   </div>
 </section>
 
+<!-- TESTE INTERATIVO -->
+<section class="dark section" style="background:#0D2230;padding-top:0">
+  <div class="container">
+    <div style="text-align:center;max-width:640px;margin:0 auto 40px" class="reveal">
+      <span class="eyebrow">Diagnóstico rápido</span>
+      <h2 class="sec-title" style="color:#fff">Qual é o seu nível de esgotamento agora?</h2>
+      <p style="color:#8FA8B8;font-size:15.5px">5 perguntas. Responda com honestidade — só você vai ver o resultado.</p>
+    </div>
+    <div class="quiz reveal">
+      <div class="quiz-q" id="q1"><p>1. Você acorda cansado, mesmo dormindo 7 horas ou mais?</p><div class="quiz-btns"><button class="quiz-btn" onclick="responder(1,'s')">Sim, frequentemente</button><button class="quiz-btn" onclick="responder(1,'n')">Não, durmo e acordo bem</button></div></div>
+      <div class="quiz-q" id="q2"><p>2. Tarefas simples parecem consumir o dobro do tempo que deveriam?</p><div class="quiz-btns"><button class="quiz-btn" onclick="responder(2,'s')">Sim, estou mais lento</button><button class="quiz-btn" onclick="responder(2,'n')">Não, meu ritmo está normal</button></div></div>
+      <div class="quiz-q" id="q3"><p>3. Você sente culpa ou ansiedade quando para de trabalhar por uma hora?</p><div class="quiz-btns"><button class="quiz-btn" onclick="responder(3,'s')">Sim, não consigo desligar</button><button class="quiz-btn" onclick="responder(3,'n')">Não, consigo descansar</button></div></div>
+      <div class="quiz-q" id="q4"><p>4. Perdeu o entusiasmo por algo que antes te motivava profissionalmente?</p><div class="quiz-btns"><button class="quiz-btn" onclick="responder(4,'s')">Sim, parece vazio</button><button class="quiz-btn" onclick="responder(4,'n')">Não, ainda me anima</button></div></div>
+      <div class="quiz-q" id="q5"><p>5. Você está mais irritável ou distante das pessoas ao seu redor?</p><div class="quiz-btns"><button class="quiz-btn" onclick="responder(5,'s')">Sim, percebo isso</button><button class="quiz-btn" onclick="responder(5,'n')">Não, estou bem emocionalmente</button></div></div>
+      <div class="quiz-result" id="quiz-result">
+        <div class="res-nivel" id="res-nivel"></div>
+        <div class="res-texto" id="res-texto"></div>
+        <a class="btn" href="#oferta">Ver o que o guia pode fazer por você →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- AGITAÇÃO / DADOS -->
 <section class="dark section" style="background:var(--petroleo)">
-  <div class="container">
     <div style="max-width:680px" class="reveal">
       <span class="eyebrow">O burnout que ninguém vê</span>
       <h2 class="sec-title">O esgotamento do autônomo é estruturalmente invisível</h2>
@@ -371,7 +419,7 @@ ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Bur
       <h2 class="sec-title">O que você vai encontrar</h2>
     </div>
     <div class="chapters">
-      <div class="chap reveal"><span class="c-num">CAPÍTULO 1</span><h3>Reconheça: você está em burnout?</h3><p>Os 12 sinais detalhados com base neurológica + teste de autoavaliação com 20 perguntas e interpretação por faixas.</p></div>
+      <div class="chap reveal"><span class="c-num">CAPÍTULO 1</span><h3>Reconheça: você está em burnout?</h3><p>Os 12 sinais com base neurológica — e um teste de autoavaliação que mostra em qual nível de esgotamento você está agora.</p></div>
       <div class="chap reveal"><span class="c-num">CAPÍTULO 2</span><h3>Entenda por que você chegou até aqui</h3><p>As 6 causas reais do esgotamento do autônomo — da disponibilidade permanente à instabilidade financeira.</p></div>
       <div class="chap reveal"><span class="c-num">CAPÍTULO 3</span><h3>Protocolo de emergência: as próximas 24h</h3><p>O que fazer quando você está no limite agora — 6 passos + técnica de respiração 4-7-8 para crises.</p></div>
       <div class="chap reveal"><span class="c-num">CAPÍTULO 4</span><h3>Recuperação sem parar de trabalhar</h3><p>Microdescansos, sono e movimento com base científica — dentro da rotina que você realmente tem.</p></div>
@@ -394,6 +442,20 @@ ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Bur
       <div class="bonus reveal"><span class="b-label">Bônus 1</span><h3>Diário de Recuperação</h3><p>30 dias de autoconhecimento guiado, dividido em 4 semanas: reconhecimento, padrões, experimentos e consolidação.</p></div>
       <div class="bonus reveal"><span class="b-label">Bônus 2</span><h3>Protocolo Semanal Anti-Burnout</h3><p>Um mapa de intenções para cada dia da semana — para manter o equilíbrio antes que ele quebre.</p></div>
       <div class="bonus reveal"><span class="b-label">Bônus 3</span><h3>Quando Buscar Ajuda Profissional</h3><p>Os sinais de que é hora de apoio especializado + recursos gratuitos e acessíveis no Brasil.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- QUEM CRIOU -->
+<section class="white section">
+  <div class="container">
+    <div class="autor reveal">
+      <div class="autor-icon">M</div>
+      <div>
+        <blockquote>"Criei este guia porque procurei esse conteúdo quando precisei — e não encontrei nada feito para quem trabalha por conta própria."</blockquote>
+        <p>A <b style="color:var(--petroleo)">Medinas Produções</b> nasceu da experiência real de quem é autônomo e conhece de perto a contradição de construir algo com as próprias mãos enquanto sente que está se desfazendo por dentro. Os materiais que produzimos são baseados em ciência aplicada — não em motivação, não em fórmulas, não em promessas. São guias que gostaríamos de ter encontrado quando precisávamos.</p>
+        <cite>Medinas Produções — Curitiba, BR</cite>
+      </div>
     </div>
   </div>
 </section>
@@ -435,6 +497,17 @@ ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Bur
   </div>
 </section>
 
+<!-- DEPOIMENTOS (espaço reservado — será preenchido com depoimentos reais) -->
+<section class="white section" style="padding-top:32px;padding-bottom:32px">
+  <div class="container">
+    <div style="max-width:680px;margin:0 auto;background:var(--bege);border-radius:16px;padding:40px;text-align:center;border:1px dashed #C8B8A8" class="reveal">
+      <span class="eyebrow">Em breve aqui</span>
+      <h3 style="font-family:'Lora',serif;color:var(--petroleo);margin:12px 0 10px;font-size:22px">O que quem leu está dizendo</h3>
+      <p style="font-size:15px;color:var(--cinza-claro);line-height:1.7">Estamos nos primeiros dias de lançamento. Se você comprou o guia e quer compartilhar sua experiência, <a href="contato.html" style="color:var(--terracota);font-weight:700">entre em contato</a> — publicaremos os depoimentos reais aqui, com sua autorização.</p>
+    </div>
+  </div>
+</section>
+
 <!-- OFERTA -->
 <section class="white section" id="oferta">
   <div class="container">
@@ -449,13 +522,13 @@ ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Bur
       </div>
       <div class="offer-body">
         <ul>
-          <li><b>Ebook completo</b> — 8 capítulos com base científica</li>
-          <li><b>Teste de autoavaliação</b> com 20 perguntas e interpretação</li>
-          <li><b>Protocolo de emergência</b> para as próximas 24 horas</li>
-          <li><b>5 scripts prontos</b> para estabelecer limites com clientes</li>
-          <li><b>Bônus 1:</b> Diário de Recuperação — 30 dias guiados</li>
-          <li><b>Bônus 2:</b> Protocolo Semanal Anti-Burnout</li>
-          <li><b>Bônus 3:</b> Guia de quando buscar ajuda profissional</li>
+          <li><b>Guia completo</b> — do diagnóstico ao protocolo de recuperação, em linguagem real</li>
+          <li><b>Teste de autoavaliação</b> — descubra seu nível de esgotamento e o que fazer em cada faixa</li>
+          <li><b>Protocolo de emergência</b> — o que fazer nas próximas 24h quando você está no limite</li>
+          <li><b>5 scripts prontos</b> — diga não a clientes sem perder o cliente nem a sua paz</li>
+          <li><b>Diário de Recuperação</b> — 30 dias guiados de autoconhecimento prático</li>
+          <li><b>Protocolo Semanal Anti-Burnout</b> — para manter o equilíbrio antes que ele quebre</li>
+          <li><b>Guia de apoio profissional</b> — quando buscar ajuda e onde encontrá-la no Brasil</li>
         </ul>
         <div class="price-row">
           <div class="price-old">De R$ 97</div>
@@ -464,10 +537,7 @@ ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Bur
           <div class="pix-highlight">💡 Pague via <b>Pix</b> e garanta o valor exato — aprovação na hora, sem juros. Cartão parcelado também disponível (com acréscimo da operadora).</div>
         </div>
         <button class="btn" id="btn-comprar-1" onclick="iniciarCompra(this)">Quero meu acesso agora</button>
-        <div class="guarantee">
-          <div class="g-ico">🛡️</div>
-          <p><b>Garantia incondicional de 7 dias.</b> Se o guia não fizer sentido para você, devolvemos 100% do valor. Sem perguntas, sem burocracia.</p>
-        </div>
+        <p style="text-align:center;font-size:12.5px;color:var(--cinza-claro);margin-top:16px">Pix sem taxas · Cartão em até 12x · Acesso imediato</p>
       </div>
     </div>
   </div>
@@ -481,12 +551,12 @@ ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Bur
       <h2 class="sec-title">Perguntas que você pode estar se fazendo</h2>
     </div>
     <div class="faq reveal">
-      <details><summary>Como recebo o ebook após a compra?</summary><div class="faq-body">O acesso é imediato. Pagando via Pix, a confirmação é na hora — você é redirecionado automaticamente para a página de download, onde o botão para baixar o PDF aparece assim que o pagamento é reconhecido. Pode ler no celular, tablet ou computador.</div></details>
-      <details><summary>Este ebook substitui terapia ou tratamento médico?</summary><div class="faq-body">Não — e somos transparentes sobre isso dentro do próprio guia. O ebook é um recurso educativo e prático de autoconhecimento. Se você está em sofrimento intenso, o Bônus 3 traz orientações e recursos para buscar apoio profissional, incluindo opções gratuitas no Brasil.</div></details>
-      <details><summary>Não tenho tempo nem para respirar. Vou conseguir aplicar?</summary><div class="faq-body">O guia foi desenhado exatamente para quem não tem tempo. As ferramentas cabem em janelas de 5 a 25 minutos, e há um capítulo inteiro sobre recuperação dentro da rotina — sem precisar parar de trabalhar. Você pode começar pelo Protocolo de Emergência e aplicar hoje mesmo.</div></details>
-      <details><summary>E se eu não gostar do conteúdo?</summary><div class="faq-body">Você tem 7 dias de garantia incondicional. Basta entrar em contato pelo e-mail de suporte e devolvemos 100% do valor, sem perguntas.</div></details>
-      <details><summary>O pagamento é seguro?</summary><div class="faq-body">Sim. Todo o processamento é feito pela InfinitePay, plataforma de pagamentos regulamentada pelo Banco Central, com criptografia e proteção de dados. Aceitamos Pix e cartão de crédito em até 12x.</div></details>
-      <details><summary>Sou CLT, mas me identifico com tudo isso. Serve para mim?</summary><div class="faq-body">A ciência do burnout é a mesma — sinais, causas neurológicas e ferramentas de recuperação se aplicam a qualquer pessoa esgotada. O diferencial é que os exemplos, scripts e estratégias foram escritos para a realidade de quem trabalha por conta própria. Se você se identificou, o conteúdo vai te servir.</div></details>
+      <details><summary>Como recebo o guia após a compra?</summary><div class="faq-body">O acesso é imediato. Pagando via Pix, a confirmação é na hora — você é redirecionado automaticamente para a página de download, onde o botão para baixar o PDF aparece assim que o pagamento é reconhecido. Pode ler no celular, tablet ou computador.</div></details>
+      <details><summary>Este guia substitui terapia ou tratamento médico?</summary><div class="faq-body">Não — e somos transparentes sobre isso dentro do próprio guia. O conteúdo é educativo e prático, baseado em ciência, mas não substitui acompanhamento profissional. Se você está em sofrimento intenso, o guia traz orientações e recursos para buscar apoio especializado, incluindo opções gratuitas no Brasil.</div></details>
+      <details><summary>Não tenho tempo nem para respirar. Vou conseguir aplicar?</summary><div class="faq-body">Foi exatamente para isso que o guia foi desenhado. As ferramentas cabem em janelas de 5 a 25 minutos, e há um capítulo inteiro dedicado à recuperação dentro da rotina — sem precisar parar de trabalhar. Você pode começar pelo Protocolo de Emergência e aplicar ainda hoje.</div></details>
+      <details><summary>Sou CLT, mas me identifico com tudo isso. Serve para mim?</summary><div class="faq-body">A ciência do burnout é a mesma — sinais, causas neurológicas e ferramentas de recuperação se aplicam a qualquer pessoa esgotada. Os exemplos e estratégias foram escritos para quem trabalha por conta própria, mas se você se identificou com o conteúdo da página, vai se identificar com o guia.</div></details>
+      <details><summary>O pagamento é seguro?</summary><div class="faq-body">Sim. Todo o processamento é feito pela InfinitePay, plataforma regulamentada pelo Banco Central do Brasil, com criptografia e proteção de dados. Aceitamos Pix e cartão de crédito.</div></details>
+      <details><summary>E se o conteúdo não fizer sentido para a minha realidade?</summary><div class="faq-body">Entre em contato pelo canal de suporte em até 7 dias após a compra e solicitamos o reembolso integral — é um direito seu garantido pelo Código de Defesa do Consumidor. Para exercê-lo, basta enviar uma mensagem pelo nosso <a href="contato.html" style="color:var(--terracota)">formulário de contato</a> com os dados da transação.</div></details>
     </div>
   </div>
 </section>
@@ -497,7 +567,7 @@ ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Bur
     <h2>O caminho de volta começa com uma escolha pequena.</h2>
     <p>Você já carregou tudo sozinho por tempo demais. Deixe este guia carregar um pouco com você.</p>
     <button class="btn" id="btn-comprar-2" onclick="iniciarCompra(this)">Começar minha recuperação — R$ 57</button>
-    <span class="btn-sub" style="color:#8FA8B8">Garantia de 7 dias · Pix sem taxas ou cartão em até 12x</span>
+    <span class="btn-sub" style="color:#8FA8B8">Pix sem taxas · Acesso imediato · Leitura no celular ou computador</span>
   </div>
 </section>
 
@@ -514,6 +584,35 @@ ttq.track('ViewContent', {content_id:'burnout-silencio-ebook', content_name:'Bur
 const io=new IntersectionObserver(es=>{es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');io.unobserve(e.target)}})},{threshold:.12});
 document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
 </script>
+<script>
+// ===== TESTE INTERATIVO =====
+const respostas = {};
+const resultados = {
+  0: { nivel: 'Sinal de atenção', texto: 'Você respondeu "não" para todos os sinais — isso é positivo. Mas se chegou até aqui, algo chamou sua atenção. Vale guardar este guia para quando precisar: burnout costuma aparecer aos poucos, não de repente.' },
+  1: { nivel: 'Cansaço acumulado', texto: 'Um sinal já apareceu. Pode ser uma fase mais intensa, mas vale observar. O Capítulo 4 do guia trata especificamente de recuperação dentro da rotina, sem precisar parar tudo.' },
+  2: { nivel: 'Desgaste moderado', texto: 'Dois sinais presentes. Seu corpo e mente estão pedindo atenção. O guia começa pelo diagnóstico honesto — e te dá ferramentas práticas pra agir antes que o quadro se agrave.' },
+  3: { nivel: 'Esgotamento real', texto: 'Três sinais. Você está em um nível de esgotamento que merece atenção séria. O Protocolo de Emergência (Capítulo 3) foi escrito para exatamente este momento — o que fazer nas próximas 24 horas.' },
+  4: { nivel: 'Burnout avançado', texto: 'Quatro sinais. Este é um sinal claro de burnout em estágio avançado. O guia foi escrito para essa realidade: recuperação possível, sem largar tudo, com ferramentas que cabem na sua rotina real.' },
+  5: { nivel: 'Burnout severo', texto: 'Cinco sinais. Você está no limite — e precisa de cuidado agora. O guia traz ferramentas imediatas, mas o Capítulo 8 também fala com clareza sobre quando buscar apoio profissional: você não precisa passar por isso sozinho.' }
+};
+
+function responder(q, r) {
+  respostas[q] = r;
+  const btns = document.querySelectorAll(`#q${q} .quiz-btn`);
+  btns[0].className = 'quiz-btn' + (r === 's' ? ' sim' : ' nao');
+  btns[1].className = 'quiz-btn' + (r === 'n' ? ' sim' : ' nao');
+  if (Object.keys(respostas).length === 5) {
+    const pontos = Object.values(respostas).filter(v => v === 's').length;
+    const r = resultados[pontos];
+    document.getElementById('res-nivel').textContent = r.nivel;
+    document.getElementById('res-texto').textContent = r.texto;
+    const result = document.getElementById('quiz-result');
+    result.classList.add('show');
+    result.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+}
+</script>
+
 <script>
 async function iniciarCompra(btn) {
   const textoOriginal = btn.textContent;
