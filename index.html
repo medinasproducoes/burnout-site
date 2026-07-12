@@ -622,7 +622,7 @@ async function iniciarCompra(btn) {
   btn.style.cursor = 'wait';
 
   try {
-    const res = await fetch('/.netlify/functions/create-payment', { method: 'POST' });
+    const res = await fetch('/api/create-payment', { method: 'POST' });
     const data = await res.json();
 
     if (data.url) {
