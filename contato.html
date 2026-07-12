@@ -122,6 +122,24 @@ main{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 
     </form>
   </div>
 </div>
+<script>
+(function preencherViaQueryString() {
+  const p = new URLSearchParams(window.location.search);
+  const nome = p.get('nome');
+  const email = p.get('email');
+  const valor = p.get('valor');
+  const assunto = p.get('assunto');
+  if (nome) document.querySelector('input[name="name"]').value = nome;
+  if (email) document.querySelector('input[name="email"]').value = email;
+  if (assunto) {
+    const select = document.querySelector('select[name="assunto"]');
+    [...select.options].forEach(opt => { if (opt.text === assunto) select.value = assunto; });
+  }
+  if (valor) {
+    document.querySelector('textarea[name="message"]').value = `Valor pago: ${valor}\n\n`;
+  }
+})();
+</script>
 </main>
 </body>
 </html>
