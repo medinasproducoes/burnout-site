@@ -8,141 +8,103 @@
 <link rel="icon" type="image/png" href="img/favicon.png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..600&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@600;700&family=Lato:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
-:root{--petroleo:#1B3A4B;--petroleo-deep:#10222D;--terracota:#C2542D;--branco:#F8F9FA;--bege:#F5F0EB;--cinza:#4A5568;--cinza-claro:#8296A3}
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:'Lato',sans-serif;background:var(--branco);color:var(--cinza);line-height:1.7;min-height:100vh;display:flex;flex-direction:column}
-h1,h2,h3{font-family:'Lora',serif;color:var(--petroleo);font-weight:600}
-.topbar{background:var(--petroleo-deep);padding:16px 0;border-bottom:1px solid rgba(255,255,255,.09)}
-.topbar .container{max-width:1000px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:12px}
-.brand-mark{width:34px;height:34px;background:var(--terracota);border-radius:7px;display:flex;align-items:center;justify-content:center;font-family:'Lora',serif;font-weight:700;font-size:18px;color:#fff}
-.brand-name{font-weight:700;font-size:13px;letter-spacing:3px;color:#fff}
-.brand-sub{font-size:9px;letter-spacing:4px;color:#7D95A6}
+body{font-family:'Lato',sans-serif;background:#F7F6F2;color:#1A1A2E;line-height:1.6;min-height:100vh;display:flex;flex-direction:column}
+h1,h2{font-family:'Space Grotesk',sans-serif;font-weight:700}
+.topbar{background:#10222D;padding:16px 0}
+.topbar .wrap{max-width:1000px;margin:0 auto;padding:0 24px;display:flex;align-items:center;gap:10px;color:#fff;font-family:'Space Grotesk',sans-serif;font-weight:700}
+.logo-i{width:28px;height:28px;background:#C2542D;border-radius:7px;display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:14px}
+.topbar span{color:#C2542D}
 main{flex:1;display:flex;align-items:center;justify-content:center;padding:48px 24px}
+.card{max-width:960px;width:100%;background:#fff;border-radius:22px;box-shadow:0 24px 70px rgba(0,0,0,.12);overflow:hidden;display:grid;grid-template-columns:1fr 1.25fr}
+.painel{background:linear-gradient(160deg,#1B3A4B 0%,#10222D 100%);background-image:radial-gradient(rgba(255,255,255,.04) 1px,transparent 1px),linear-gradient(160deg,#1B3A4B 0%,#10222D 100%);background-size:22px 22px,100% 100%;padding:44px 38px;color:#fff;position:relative;overflow:hidden;display:flex;flex-direction:column}
+.painel::before{content:'';position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(194,84,45,.18);top:-110px;right:-110px}
+.pc{position:relative;z-index:1}
+.pc h1{color:#fff;font-size:24px;margin-bottom:12px}
+.pc p{font-size:14px;color:rgba(255,255,255,.65);line-height:1.7;margin-bottom:20px}
+.art{position:relative;z-index:1;margin:6px 0 18px}
+.tl{position:relative;z-index:1;list-style:none;margin-top:auto;padding-top:24px;border-top:1px solid rgba(255,255,255,.12)}
+.tl li{display:flex;align-items:flex-start;gap:11px;font-size:12.5px;color:rgba(255,255,255,.75);margin-bottom:14px}
+.tl li:last-child{margin-bottom:0}
+.ti{flex:0 0 30px;width:30px;height:30px;border-radius:9px;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;color:#C2542D}
+.fl{padding:44px 40px}
+.fl h2{font-size:21px;margin-bottom:5px;color:#1A1A2E}
+.fl .sub{font-size:13.5px;color:#6B7280;margin-bottom:26px}
+.field{margin-bottom:17px}
+.field label{display:block;font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#374151;margin-bottom:7px}
+.iw{position:relative}
+.iw svg{position:absolute;left:14px;top:50%;transform:translateY(-50%);color:#C2542D;pointer-events:none;opacity:.8}
+.field input,.field select{width:100%;padding:12px 16px 12px 40px;border:1.5px solid rgba(0,0,0,.1);border-radius:10px;font-size:14.5px;font-family:'Lato';background:#F9FAFB;transition:.15s}
+.field textarea{width:100%;padding:12px 16px;border:1.5px solid rgba(0,0,0,.1);border-radius:10px;font-size:14.5px;font-family:'Lato';background:#F9FAFB;transition:.15s;resize:vertical}
+.field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23666' stroke-width='1.6' fill='none'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 16px center}
+.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:#C2542D;background:#fff;box-shadow:0 0 0 4px rgba(194,84,45,.18)}
+.btn-e{display:inline-flex;align-items:center;gap:9px;background:#C2542D;color:#fff;font-weight:700;font-size:15px;padding:15px 32px;border:none;border-radius:10px;cursor:pointer;transition:.2s;width:100%;justify-content:center}
+.btn-e:hover{background:#E8734A;transform:translateY(-2px);box-shadow:0 8px 20px rgba(194,84,45,.18)}
+@media(max-width:760px){.card{grid-template-columns:1fr}.painel{padding:36px 30px}}
 </style>
 </head>
 <body>
-<nav class="topbar">
-  <div class="container">
-    <div class="brand-mark">M</div>
-    <div>
-      <div class="brand-name">MEDINAS</div>
-      <div class="brand-sub">PRODUÇÕES</div>
-    </div>
-  </div>
-</nav>
-<main>
-<style>
-.card{max-width:920px;width:100%;background:#fff;border-radius:20px;box-shadow:0 20px 60px rgba(16,34,45,.12);overflow:hidden;display:grid;grid-template-columns:1fr 1.2fr}
-.painel{background:linear-gradient(160deg,var(--petroleo) 0%,var(--petroleo-deep) 100%);padding:48px 40px;color:#fff;position:relative;overflow:hidden}
-.painel::before{content:'';position:absolute;width:280px;height:280px;border-radius:50%;background:rgba(194,84,45,.12);top:-100px;right:-100px}
-.painel::after{content:'';position:absolute;width:180px;height:180px;border-radius:50%;background:rgba(255,255,255,.04);bottom:-60px;left:-60px}
-.painel-content{position:relative;z-index:1}
-.icone-envelope{width:64px;height:64px;background:rgba(194,84,45,.18);border:1.5px solid rgba(194,84,45,.4);border-radius:16px;display:flex;align-items:center;justify-content:center;margin-bottom:28px}
-.icone-envelope svg{width:30px;height:30px;color:var(--terracota)}
-.painel h1{color:#fff;font-size:26px;margin-bottom:14px}
-.painel p{font-size:14.5px;color:#B9CAD3;line-height:1.7;margin-bottom:28px}
-.painel-item{display:flex;gap:12px;align-items:flex-start;margin-bottom:18px}
-.painel-item svg{width:18px;height:18px;color:var(--terracota);flex-shrink:0;margin-top:2px}
-.painel-item p{font-size:13px;color:#CBD8DF;margin:0}
-</style>
-
-<style>
-.form-lado{padding:48px 40px}
-.form-lado h2{font-size:22px;margin-bottom:6px}
-.form-lado .sub{font-size:13.5px;color:var(--cinza-claro);margin-bottom:28px}
-.field{margin-bottom:18px}
-.field label{display:block;font-size:11.5px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:var(--cinza);margin-bottom:7px}
-.field input,.field select,.field textarea{width:100%;padding:13px 16px;border:1.5px solid #E4DED6;border-radius:10px;font-size:14.5px;font-family:'Lato';transition:.2s;background:var(--bege)}
-.field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--petroleo);background:#fff;box-shadow:0 0 0 3px rgba(27,58,75,.08)}
-.btn-enviar{display:inline-flex;align-items:center;gap:10px;background:var(--terracota);color:#fff;font-weight:700;font-size:15px;padding:15px 32px;border:none;border-radius:10px;cursor:pointer;transition:.25s;box-shadow:0 6px 20px rgba(194,84,45,.3)}
-.btn-enviar:hover{background:#A8441F;transform:translateY(-2px)}
-.btn-enviar svg{width:18px;height:18px}
-@media(max-width:760px){.card{grid-template-columns:1fr}}
-</style>
-
-<div class="card">
+<div class="topbar"><div class="wrap"><span class="logo-i">M</span><span style="color:#fff">Burnout em Silêncio</span></div></div>
+<main><div class="card">
   <div class="painel">
-    <div class="painel-content">
-      <div class="icone-envelope">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.8" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-      </div>
+    <div class="pc">
       <h1>Fale com a gente</h1>
-      <p>Dúvidas sobre o guia, questões de pagamento, reembolso ou dados pessoais — responderemos com atenção e no seu tempo.</p>
-
-      <div class="painel-item">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
-        <p>Resposta em até 2 dias úteis</p>
+      <div class="art">
+        <svg width="100%" height="70" viewBox="0 0 260 70" xmlns="http://www.w3.org/2000/svg">
+          <defs><linearGradient id="wg" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0%" stop-color="#E8734A" stop-opacity="0.1"/>
+            <stop offset="50%" stop-color="#E8734A" stop-opacity="0.9"/>
+            <stop offset="100%" stop-color="#E8734A" stop-opacity="0.1"/>
+          </linearGradient></defs>
+          <path d="M0,48 C24,14 44,14 64,48 C84,82 104,82 124,48 C144,14 164,14 184,48 C198,70 212,58 222,48"
+            fill="none" stroke="url(#wg)" stroke-width="2.5" stroke-linecap="round"/>
+          <circle cx="64" cy="48" r="4" fill="rgba(255,255,255,.7)"/>
+          <circle cx="124" cy="48" r="4" fill="rgba(255,255,255,.7)"/>
+          <circle cx="34" cy="30" r="3" fill="#E8734A" opacity=".8"/>
+          <circle cx="94" cy="30" r="3" fill="#E8734A" opacity=".8"/>
+          <circle cx="154" cy="30" r="3" fill="#E8734A" opacity=".8"/>
+        </svg>
       </div>
-      <div class="painel-item">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
-        <p>Sua mensagem não fica armazenada em nosso servidor</p>
-      </div>
-      <div class="painel-item">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
-        <p>Direito de arrependimento de 7 dias garantido por lei</p>
-      </div>
+      <p>Dúvidas sobre o guia, questões de pagamento, reembolso ou dados pessoais — respondemos com atenção.</p>
     </div>
+    <ul class="tl">
+      <li><span class="ti"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 3"/></svg></span><span>Resposta em até 2 dias úteis</span></li>
+      <li><span class="ti"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l8 4v6c0 5-3.5 8.5-8 10-4.5-1.5-8-5-8-10V6l8-4z"/></svg></span><span>Pagamentos via InfinitePay, regulamentada pelo Banco Central</span></li>
+      <li><span class="ti"><svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="10" width="16" height="10" rx="2"/><path d="M8 10V7a4 4 0 018 0v3"/></svg></span><span>Sua mensagem não fica armazenada em nosso servidor</span></li>
+    </ul>
   </div>
-
-  <div class="form-lado">
+  <div class="fl">
     <h2>Envie sua mensagem</h2>
     <p class="sub">Preencha os campos abaixo — é rápido.</p>
-
     <form action="https://api.web3forms.com/submit" method="POST">
       <input type="hidden" name="access_key" value="ed729295-176e-43af-bc4f-53158098c893">
       <input type="hidden" name="subject" value="Contato - Burnout em Silêncio">
       <input type="hidden" name="from_name" value="Formulário do site - Burnout em Silêncio">
-
-      <div class="field">
-        <label>Seu nome</label>
-        <input type="text" name="name" required>
-      </div>
-      <div class="field">
-        <label>Seu e-mail</label>
-        <input type="email" name="email" required>
-      </div>
-      <div class="field">
-        <label>Assunto</label>
+      <div class="field"><label>Seu nome</label><div class="iw">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 3.5-7 8-7s8 3 8 7"/></svg>
+        <input type="text" name="name" required></div></div>
+      <div class="field"><label>Seu e-mail</label><div class="iw">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>
+        <input type="email" name="email" required></div></div>
+      <div class="field"><label>Assunto</label><div class="iw">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
         <select name="assunto">
           <option>Dúvida sobre o guia</option>
           <option>Pagamento não confirmado</option>
           <option>Solicitação de reembolso</option>
           <option>Dados pessoais (LGPD)</option>
           <option>Outro assunto</option>
-        </select>
-      </div>
-      <div class="field">
-        <label>Mensagem</label>
-        <textarea name="message" rows="4" required placeholder="Se for sobre pagamento, inclua a data da compra e o valor pago."></textarea>
-      </div>
-      <button type="submit" class="btn-enviar">
-        <svg fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+        </select></div></div>
+      <div class="field"><label>Mensagem</label>
+        <textarea name="message" rows="4" required placeholder="Se for sobre pagamento, inclua a data e o valor pago."></textarea></div>
+      <button type="submit" class="btn-e">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z"/></svg>
         Enviar mensagem
       </button>
     </form>
   </div>
-</div>
-<script>
-(function preencherViaQueryString() {
-  const p = new URLSearchParams(window.location.search);
-  const nome = p.get('nome');
-  const email = p.get('email');
-  const valor = p.get('valor');
-  const assunto = p.get('assunto');
-  if (nome) document.querySelector('input[name="name"]').value = nome;
-  if (email) document.querySelector('input[name="email"]').value = email;
-  if (assunto) {
-    const select = document.querySelector('select[name="assunto"]');
-    [...select.options].forEach(opt => { if (opt.text === assunto) select.value = assunto; });
-  }
-  if (valor) {
-    document.querySelector('textarea[name="message"]').value = `Valor pago: ${valor}\n\n`;
-  }
-})();
-</script>
-</main>
+</div></main>
 </body>
 </html>
